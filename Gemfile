@@ -38,3 +38,31 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+
+gem 'devise'
+gem 'therubyracer', :platforms => :ruby
+gem 'execjs'
+gem 'geocoder'
+gem 'protected_attributes'
+gem 'will_paginate', '~> 3.0'
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth'
+gem "braintree-rails", :github => "lyang/braintree-rails", :branch => 'master'
+gem 'gmaps4rails'
+gem "paperclip", '~> 3.5.2'
+gem "aws-s3", :require => "aws/s3"
+gem "aws-sdk"
+#gem 'airbrake'
+gem 'rails_stdout_logging'
+gem 'rails_12factor'
+gem 'carmen-rails', '~> 1.0.0'
+gem 'google_directions'
+gem 'houston'
+#gem "wkhtmltopdf-binary"
+#gem 'wicked_pdf'
+gem 'bootstrap-datepicker-rails'
+gem 'prawnto'
+gem 'prawn'
+#gem 'twilio-ruby'
+gem 'delayed_job_active_record'
