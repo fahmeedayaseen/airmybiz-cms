@@ -1,6 +1,6 @@
 class SuperAdmin::MerchantsController < SuperAdmin::SuperAdminController
 
-  add_breadcrumb "STORE OWNERS", "/super_admin/merchants"
+  #add_breadcrumb "STORE OWNERS", "/super_admin/merchants"
 
   layout "super_admin"
 
