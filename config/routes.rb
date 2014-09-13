@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+
+  devise_for :users, :controllers => {
+      :sessions => "users/sessions",
+      :confirmation => "users/confirmations",
+      :passwords => "users/passwords",
+      :registrations => "users/registrations",
+      :unlocks => "users/unlocks",
+      :omniauth_callbacks => "users/omniauth_callbacks"
+  }
+
+  devise_scope :user do
+    get "sign_in" => "users/sessions#new"
+    get "sign_up" => "users/registrations#new"
+    get "sign_out" => "users/sessions#destroy"
+    get "change_password" => "users/registrations#change_password"
+    post "update_password" => "users/registrations#update_password"
+    get "/super_admin" => "users/sessions#super_admin_new"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,6 +26,11 @@ Rails.application.routes.draw do
   root :to => "home#index"
 
   resources :home
+
+
+  namespace :super_admin do
+    resources :dashboard
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

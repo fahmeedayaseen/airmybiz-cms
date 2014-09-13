@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+    <h3 class="page-title">
+      Dashboard
+      <small>statistics and more</small>
+    </h3>
+    <ul class="page-breadcrumb breadcrumb">
+      <li>
+        <i class="fa fa-home"></i>
+        <a href="/super_admin/dashboard">Home</a>
+        <i class="fa fa-angle-right"></i>
+      </li>
+      <li>
+        <a href="/super_admin/dashboard">Dashboard</a>
+      </li>
+      <li class="pull-right">
+        <div data-original-title="Change dashboard date range" data-placement="top" class="dashboard-date-range tooltips" id="dashboard-report-range" style="display: block;">
+          <i class="icon-calendar"></i>
+          <span>September 3, 2014 - September 9, 2014</span>
+          <i class="fa fa-angle-down"></i>
+        </div>
+      </li>
+    </ul>
+    <!-- END PAGE TITLE & BREADCRUMB-->
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat blue-madison">
+      <div class="visual">
+        <i class="fa fa-comments"></i>
+      </div>
+      <div class="details">
+        <div class="number font_set">
+          <%= @new_stores %> New
+        </div>
+        <div class="desc font_set">
+          <%= @stores %> Total
+        </div>
+      </div>
+      <a href="/super_admin/customers" class="more font_set2">
+        Stores
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat red-intense">
+      <div class="visual">
+        <i class="fa fa-bar-chart-o"></i>
+      </div>
+      <div class="details">
+        <div class="number font_set">
+          <%= @new_customers %> New
+        </div>
+        <div class="desc font_set">
+          <%= @customers %> Total
+        </div>
+      </div>
+      <a href="/super_admin/drivers" class="more font_set2">
+        Customers
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat green-haze">
+      <div class="visual">
+        <i class="fa fa-shopping-cart"></i>
+      </div>
+      <div class="details">
+        <div class="number font_set">
+          100 New
+        </div>
+        <div class="desc font_set">
+          500 Total
+        </div>
+      </div>
+      <a href="/super_admin/jobs" class="more font_set2">
+        Orders
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat purple-plum">
+      <div class="visual">
+        <i class="fa fa-globe"></i>
+      </div>
+      <div class="details">
+        <div class="number font_set">
+          $ 500 Today
+        </div>
+        <div class="desc font_set">
+          $ 5000 Total
+        </div>
+      </div>
+      <a href="#" class="more font_set2">
+        Sales
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat purple-plum">
+      <div class="visual">
+        <i class="fa fa-globe"></i>
+      </div>
+      <div class="details">
+        <div class="number font_set">
+          <%= @reviews %> New
+        </div>
+        <div class="desc font_set">
+          <%= @today_reviews %> Total
+        </div>
+      </div>
+      <a href="#" class="more font_set2">
+        Reviews
+      </a>
+    </div>
+  </div>
+</div>
