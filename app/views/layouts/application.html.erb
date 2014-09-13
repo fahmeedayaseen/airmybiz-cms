@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html>
+<!--
+-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
 <head>
-  <title>AirmybizCms</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8"/>
+  <title>Customer Portal</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="" name="description"/>
+  <meta content="" name="author"/>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="icon"
+        type="image/ico"
+        href="/assets/pr_images/favicon.ico"/>
 </head>
-<body>
+<body class="fixed-top">
+<% if signed_in? %>
+    <%= render :partial => "/shared/header" %>
+<% end %>
 
-<%= yield %>
+<div id="container" class="row-fluid">
+  <% if signed_in? %>
+      <div id="sidebar" class="nav-collapse collapse">
+        <%= render :partial => "shared/sidebar" %>
+      </div>
+  <% end %>
+  <div id="body">
+    <div id="widget-config" class="modal hide">
+      <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button">×</button>
+        <h3>Widget Settings</h3>
+      </div>
+      <div class="modal-body">
+        <p>Here will be a configuration form</p>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div id="page" class="dashboard">
 
+        <div class="shadow" style="display: none !important;"></div>
+        <div class="shadow_new" style="display: none !important;"></div>
+        <div id="ajax_loader" class="ajax_loader" style="display: none !important;"><%= image_tag("/assets/pr_images/ajax_loader.gif", :width => 100) %></div>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+<%#= render :partial => "shared/footer" %>
 </body>
 </html>

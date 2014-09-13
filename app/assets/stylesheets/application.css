@@ -10,6 +10,32 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *=require conquer/bootstrap/css/bootstrap.min.css
+ *=require conquer/bootstrap/css/bootstrap-responsive.min.css
+ *=require conquer/font-awesome/css/font-awesome.css
+ *=require conquer/css/style.css
+ *=require conquer/css/style_responsive.css
+ *=require conquer/css/style_grey.css
+ *=require conquer/fancybox/source/jquery.fancybox.css
+ *=require conquer/fancybox/source/jquery.fancybox.css
+ *=require conquer/gritter/css/jquery.gritter.css
+ *=require conquer/uniform/css/uniform.default.css
+ *=require conquer/chosen-bootstrap/chosen/chosen.css
+ *=require conquer/bootstrap-daterangepicker/daterangepicker.css
+ *=require conquer/fullcalendar/fullcalendar/bootstrap-fullcalendar.css
+ *=require conquer/jqvmap/jqvmap/jqvmap.css
+ *=require shared_app_css
+ *=require apprise-v2
+ *=require conquer/bootstrap-datepicker/css/datepicker.css
+ *=require conquer/bootstrap-timepicker/compiled/timepicker.css
+ *=require conquer/bootstrap-daterangepicker/daterangepicker.css
+ *=require conquer/clockface/css/clockface
+ *=require conquer/data-tables/DT_bootstrap.css
+ *=require apprise
+ *=require bootstrap-datetimepicker.min
+ *=require jquery.treetable.css
+ *=require screen.css
  *= require_self
- */
+*/
+
+

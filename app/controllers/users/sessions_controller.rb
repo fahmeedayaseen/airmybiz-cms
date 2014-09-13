@@ -64,7 +64,7 @@ class Users::SessionsController < Devise::SessionsController
   def resolve_layout
     case action_name
       when "super_admin_new"
-        "super_admin_non_login"
+        "super_admin_non_login.html"
       else
         "application"
     end

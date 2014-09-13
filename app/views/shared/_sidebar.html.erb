@@ -1,0 +1,117 @@
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+<div class="sidebar-toggler hidden-phone"></div>
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+<div class="navbar-inverse">
+  <form class="navbar-search visible-phone">
+    <input type="text" class="search-query" placeholder="Search"/>
+  </form>
+</div>
+<!-- END RESPONSIVE QUICK SEARCH FORM -->
+<!-- BEGIN SIDEBAR MENU -->
+<ul>
+  <li class=<%= params[:controller] == "dashboard" ? "active" : "" %>>
+    <a href="/super_admin/dashboard">
+      <i class="icon-home"></i> Dashboard
+    </a>
+  </li>
+  <li class="has-sub <%= params[:controller].include?('super_admin/merchants') ? "active" : "" %>">
+    <a href="javascript:;" class="">
+      <i class="icon-bookmark-empty"></i> Merchants
+      <span class="arrow"></span>
+    </a>
+    <ul class="sub">
+      <li><a class="" href="/super_admin/merchants">All Merchants</a></li>
+      <li><a class="" href="/super_admin/merchants/new">Create Merchant</a></li>
+    </ul>
+  </li>
+  <li class="has-sub <%= params[:controller].include?('super_admin/customers') ? "active" : "" %>">
+    <a href="javascript:;" class="">
+      <i class="icon-bookmark-empty"></i> Customers
+      <span class="arrow"></span>
+    </a>
+    <ul class="sub">
+      <li><a class="" href="/super_admin/customers">All Customer</a></li>
+      <li><a class="" href="/super_admin/customers/new">Create Customer</a></li>
+    </ul>
+  </li>
+
+  <li class="has-sub <%= params[:controller] == "reportings" ? "active" : "" %>">
+    <a href="javascript:;" class="">
+      <i class="icon-bar-chart"></i> Reporting
+      <span class="arrow"></span>
+    </a>
+    <ul class="sub">
+      <li><a class="" href="#">Customer Reports</a></li>
+    </ul>
+  </li>
+
+  <li class="has-sub <%= params[:controller] == "reportings" ? "active" : "" %>">
+    <a href="javascript:;" class="">
+      <i class="icon-bar-chart"></i> Analytics
+      <span class="arrow"></span>
+    </a>
+    <ul class="sub">
+      <li><a class="" href="#">Customer Analytics</a></li>
+    </ul>
+  </li>
+
+</ul>
+<!-- END SIDEBAR MENU -->
+<!--Time and date on SIDE BAR-->
+<div class="clock">
+  <div id="Date"></div>
+  <ul class="sys-time-detail">
+    <h id="hours"></h>
+    <h id="point">:</h>
+    <h id="min"></h>
+    <h id="point">:</h>
+    <h id="sec"></h>
+  </ul>
+</div>
+
+<script type="text/javascript">
+    var button_timer = "";
+    var d, dd;
+    $(document).ready(function () {
+        // Create two variable with the names of the months and days in an array
+        var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+        var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+        // Create a newDate() object
+        var newDate = new Date();
+        // Extract the current date from Date object
+        newDate.setDate(newDate.getUTCDate());
+        // Output the day, date, month and year
+        $('#Date').html(dayNames[newDate.getUTCDay()] + " " + newDate.getUTCDate() + ' ' + monthNames[newDate.getUTCMonth()] + ' ' + newDate.getFullYear());
+
+        setInterval(function () {
+            // Create a newDate() object and extract the seconds of the current time on the visitor's
+            var seconds = new Date().getUTCSeconds();
+            // Add a leading zero to seconds value
+            $("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+        }, 1000);
+
+        setInterval(function () {
+            // Create a newDate() object and extract the minutes of the current time on the visitor's
+            var minutes = new Date().getUTCMinutes();
+            // Add a leading zero to the minutes value
+            $("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+        }, 1000);
+
+        setInterval(function () {
+            // Create a newDate() object and extract the hours of the current time on the visitor's
+            var hours = new Date().getUTCHours();
+            // Add a leading zero to the hours value
+            $("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+        }, 1000);
+        clearTimeout(button_timer);
+//        d = setInterval("refresh_active_ports()", 300000);
+//        dd = setInterval("refresh_active_cps()", 300000);
+//        refresh_ticker();
+//        $("#webticker").webTicker();
+//        $("#webticker2").webTicker({travelocity:0.08, direction:-1});
+//        ticker = setInterval("refresh_ticker()", 300000);
+    });
+</script>

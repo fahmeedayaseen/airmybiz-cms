@@ -1,17 +1,30 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Log in" %></div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<!DOCTYPE html>
+<html lang="en" class="ie8">
+<html lang="en" class="ie9">
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Customer Portal</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="" name="description"/>
+  <meta content="" name="author"/>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link rel="icon"
+        type="image/ico"
+        href="/assets/pr_images/favicon.ico"/>
+</head>
+<body>
+<div id="logo" class="center">
+  <img src="/assets/pr_images/2.png" alt="logo" class="center"/>
+</div>
+<%= yield %>
+<div id="footer">
+  <%= "Copyright 2012. 46 Labs, LLC ~ VERSION " %>
+  <div class="span pull-right">
+    <span class="go-top"><i class="icon-arrow-up"></i></span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,119 +1,158 @@
-<div class="row">
-  <div class="col-md-12">
-    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+<div class="row-fluid">
+  <div class="span12">
     <h3 class="page-title">
-      Dashboard
-      <small>statistics and more</small>
+      Super Admin/Dashboard
     </h3>
-    <ul class="page-breadcrumb breadcrumb">
-      <li>
-        <i class="fa fa-home"></i>
-        <a href="/super_admin/dashboard">Home</a>
-        <i class="fa fa-angle-right"></i>
-      </li>
-      <li>
-        <a href="/super_admin/dashboard">Dashboard</a>
-      </li>
-      <li class="pull-right">
-        <div data-original-title="Change dashboard date range" data-placement="top" class="dashboard-date-range tooltips" id="dashboard-report-range" style="display: block;">
-          <i class="icon-calendar"></i>
-          <span>September 3, 2014 - September 9, 2014</span>
-          <i class="fa fa-angle-down"></i>
-        </div>
-      </li>
-    </ul>
-    <!-- END PAGE TITLE & BREADCRUMB-->
   </div>
 </div>
-<div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="dashboard-stat blue-madison">
-      <div class="visual">
-        <i class="fa fa-comments"></i>
+<div class="row-fluid">
+  <div class="span12" id="carrier_table_main">
+    <!-- BEGIN EXAMPLE TABLE widget-->
+    <div class="widget">
+      <div class="widget-title">
+        <h4><i class="icon-reorder"></i>Display Carriers</h4>
+        <span class="tools"><a class="icon-chevron-down" href="javascript:"></a></span>
       </div>
-      <div class="details">
-        <div class="number font_set">
-          <%= @new_stores %> New
-        </div>
-        <div class="desc font_set">
-          <%= @stores %> Total
+      <div class="widget-body">
+        <div id="carriers_show">
+          <%= render :partial => '/super_admin/customers/list' %>
         </div>
       </div>
-      <a href="/super_admin/customers" class="more font_set2">
-        Stores
-      </a>
     </div>
   </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="dashboard-stat red-intense">
-      <div class="visual">
-        <i class="fa fa-bar-chart-o"></i>
-      </div>
-      <div class="details">
-        <div class="number font_set">
-          <%= @new_customers %> New
-        </div>
-        <div class="desc font_set">
-          <%= @customers %> Total
-        </div>
-      </div>
-      <a href="/super_admin/drivers" class="more font_set2">
-        Customers
-      </a>
-    </div>
+  <div class="action_btn_carrier" style="float: left;">
+    <button class="btn btn-info btn-primary" type="button" onclick="delete_carrier()">Delete Carrier</button>
+    <button class="btn btn-info btn-primary" type="button" onclick="disable_carrier()">Disable Carrier</button>
+    <button class="btn btn-info btn-primary" type="button" onclick="enable_carrier()">Enable Carrier</button>
+    <button class="btn btn-info btn-primary" type="button" onclick="export_carrier()">Export Carrier</button>
   </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="dashboard-stat green-haze">
-      <div class="visual">
-        <i class="fa fa-shopping-cart"></i>
-      </div>
-      <div class="details">
-        <div class="number font_set">
-          100 New
-        </div>
-        <div class="desc font_set">
-          500 Total
-        </div>
-      </div>
-      <a href="/super_admin/jobs" class="more font_set2">
-        Orders
-      </a>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="dashboard-stat purple-plum">
-      <div class="visual">
-        <i class="fa fa-globe"></i>
-      </div>
-      <div class="details">
-        <div class="number font_set">
-          $ 500 Today
-        </div>
-        <div class="desc font_set">
-          $ 5000 Total
-        </div>
-      </div>
-      <a href="#" class="more font_set2">
-        Sales
-      </a>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="dashboard-stat purple-plum">
-      <div class="visual">
-        <i class="fa fa-globe"></i>
-      </div>
-      <div class="details">
-        <div class="number font_set">
-          <%= @reviews %> New
-        </div>
-        <div class="desc font_set">
-          <%= @today_reviews %> Total
-        </div>
-      </div>
-      <a href="#" class="more font_set2">
-        Reviews
-      </a>
-    </div>
-  </div>
+
 </div>
+
+<!-- END PAGE CONTENT-->
+<script type=text/javascript>
+
+
+    function delete_carrier() {
+        var array_of_checked_values = [];
+        $(".checkboxes").each(function () {
+            if ($(this).is(':checked')) {
+                array_of_checked_values.push(this.value)
+            }
+        });
+        if (array_of_checked_values.length < 1) {
+            apprise("Select carrier from the list");
+            return;
+        }
+        apprise("Are you sure you want to delete this carrier?", {'confirm':true}, function (r) {
+            if (r) {
+                $('.shadow').show();
+                $('.ajax_loader').show();
+                var container = $("#carriers_show");
+                $.ajax({
+                    url:'/mycarriers/delete_carrier?ids=' + array_of_checked_values,
+                    type:'get',
+                    dataType:'json',
+                    processData:false,
+                    success:function (data) {
+                        container.html(data.html);
+                        $('.shadow').hide();
+                        $('.ajax_loader').hide();
+                        hudMsg('success', 'Carrier Deleted.');
+                    },
+                    error:function (data) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    function disable_carrier() {
+        var array_of_checked_values = [];
+        $(".checkboxes").each(function () {
+            if ($(this).is(':checked')) {
+                array_of_checked_values.push(this.value)
+            }
+        });
+        if (array_of_checked_values.length < 1) {
+            apprise("Select carrier from the list");
+            return;
+        }
+        apprise("Are you sure you want to disable this carrier?", {'confirm':true}, function (r) {
+            if (r) {
+                $('.shadow').show();
+                $('.ajax_loader').show();
+                var container = $("#carriers_show");
+                var id;
+                id = $('#carrier_id').val();
+                $.ajax({
+                    url:'/mycarriers/disable_carrier?ids=' + array_of_checked_values,
+                    type:'get',
+                    dataType:'json',
+                    processData:false,
+                    success:function (data) {
+                        container.html(data.html);
+                        $('.shadow').hide();
+                        $('.ajax_loader').hide();
+                        hudMsg('success', 'Carrier Disabled.');
+                    },
+                    error:function (data) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    function modify_carrier(id) {
+        window.location.replace("/mycarriers/" + id + "/edit")
+    }
+
+    function enable_carrier() {
+        var array_of_checked_values = [];
+        $(".checkboxes").each(function () {
+            if ($(this).is(':checked')) {
+                array_of_checked_values.push(this.value)
+            }
+        });
+        if (array_of_checked_values.length < 1) {
+            apprise("Select carrier from the list");
+            return;
+        }
+        apprise("Are you sure you want to enable this carrier?", {'confirm':true}, function (r) {
+            if (r) {
+                $('.shadow').show();
+                $('.ajax_loader').show();
+                var container = $("#carriers_show");
+                var id;
+                id = $('#carrier_id').val();
+                $.ajax({
+                    url:'/mycarriers/enable_carrier?ids=' + array_of_checked_values,
+                    type:'get',
+                    dataType:'json',
+                    processData:false,
+                    success:function (data) {
+                        container.html(data.html);
+//                        if (test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle)")) {
+//                            test.uniform();
+//                        }
+                        $('.shadow').hide();
+                        $('.ajax_loader').hide();
+                        hudMsg('success', 'Carrier Enabled.');
+
+                    },
+                    error:function (data) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+
+    function export_carrier() {
+        document.location.href = '/mycarriers/export_carrier';
+    }
+
+</script>
+
