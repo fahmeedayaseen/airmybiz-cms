@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   namespace :super_admin do
     resources :dashboard
+    resources :categories
+    resources :sub_categories
   end
 
   # Example of regular route:

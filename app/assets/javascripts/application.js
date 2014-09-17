@@ -51,7 +51,6 @@
 //= require apprise-1.5.full
 //= require sud
 //= require checks
-//= require_self
 //= require  conquer/bootstrap-datepicker/js/bootstrap-datepicker.js
 //= require  conquer/bootstrap-daterangepicker/date.js
 //= require  conquer/bootstrap-daterangepicker/daterangepicker.js

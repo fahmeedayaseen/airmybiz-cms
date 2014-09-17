@@ -66,3 +66,4 @@ gem 'prawnto'
 gem 'prawn'
 #gem 'twilio-ruby'
 gem 'delayed_job_active_record'
+gem "breadcrumbs_on_rails"

@@ -1,10 +1,14 @@
-<div class="row-fluid">
-  <div class="span12">
-    <h3 class="page-title">
-      Super Admin/Dashboard
-    </h3>
-  </div>
-</div>
+<!--<div class="row-fluid">-->
+<!--<div class="span12">-->
+<!--<h3 class="page-title">-->
+<!--Super Admin/Dashboard-->
+<!--</h3>-->
+<!--</div>-->
+<!--</div>-->
+<h3 class="page-title">
+  Dashboard
+  <small>statistics and more</small>
+</h3>
 <div class="row-fluid">
   <div class="span12" id="carrier_table_main">
     <!-- BEGIN EXAMPLE TABLE widget-->
@@ -20,13 +24,6 @@
       </div>
     </div>
   </div>
-  <div class="action_btn_carrier" style="float: left;">
-    <button class="btn btn-info btn-primary" type="button" onclick="delete_carrier()">Delete Carrier</button>
-    <button class="btn btn-info btn-primary" type="button" onclick="disable_carrier()">Disable Carrier</button>
-    <button class="btn btn-info btn-primary" type="button" onclick="enable_carrier()">Enable Carrier</button>
-    <button class="btn btn-info btn-primary" type="button" onclick="export_carrier()">Export Carrier</button>
-  </div>
-
 </div>
 
 <!-- END PAGE CONTENT-->
@@ -44,23 +41,23 @@
             apprise("Select carrier from the list");
             return;
         }
-        apprise("Are you sure you want to delete this carrier?", {'confirm':true}, function (r) {
+        apprise("Are you sure you want to delete this carrier?", {'confirm': true}, function (r) {
             if (r) {
                 $('.shadow').show();
                 $('.ajax_loader').show();
                 var container = $("#carriers_show");
                 $.ajax({
-                    url:'/mycarriers/delete_carrier?ids=' + array_of_checked_values,
-                    type:'get',
-                    dataType:'json',
-                    processData:false,
-                    success:function (data) {
+                    url: '/mycarriers/delete_carrier?ids=' + array_of_checked_values,
+                    type: 'get',
+                    dataType: 'json',
+                    processData: false,
+                    success: function (data) {
                         container.html(data.html);
                         $('.shadow').hide();
                         $('.ajax_loader').hide();
                         hudMsg('success', 'Carrier Deleted.');
                     },
-                    error:function (data) {
+                    error: function (data) {
                         window.location.reload();
                     }
                 });
@@ -79,7 +76,7 @@
             apprise("Select carrier from the list");
             return;
         }
-        apprise("Are you sure you want to disable this carrier?", {'confirm':true}, function (r) {
+        apprise("Are you sure you want to disable this carrier?", {'confirm': true}, function (r) {
             if (r) {
                 $('.shadow').show();
                 $('.ajax_loader').show();
@@ -87,17 +84,17 @@
                 var id;
                 id = $('#carrier_id').val();
                 $.ajax({
-                    url:'/mycarriers/disable_carrier?ids=' + array_of_checked_values,
-                    type:'get',
-                    dataType:'json',
-                    processData:false,
-                    success:function (data) {
+                    url: '/mycarriers/disable_carrier?ids=' + array_of_checked_values,
+                    type: 'get',
+                    dataType: 'json',
+                    processData: false,
+                    success: function (data) {
                         container.html(data.html);
                         $('.shadow').hide();
                         $('.ajax_loader').hide();
                         hudMsg('success', 'Carrier Disabled.');
                     },
-                    error:function (data) {
+                    error: function (data) {
                         window.location.reload();
                     }
                 });
@@ -120,7 +117,7 @@
             apprise("Select carrier from the list");
             return;
         }
-        apprise("Are you sure you want to enable this carrier?", {'confirm':true}, function (r) {
+        apprise("Are you sure you want to enable this carrier?", {'confirm': true}, function (r) {
             if (r) {
                 $('.shadow').show();
                 $('.ajax_loader').show();
@@ -128,11 +125,11 @@
                 var id;
                 id = $('#carrier_id').val();
                 $.ajax({
-                    url:'/mycarriers/enable_carrier?ids=' + array_of_checked_values,
-                    type:'get',
-                    dataType:'json',
-                    processData:false,
-                    success:function (data) {
+                    url: '/mycarriers/enable_carrier?ids=' + array_of_checked_values,
+                    type: 'get',
+                    dataType: 'json',
+                    processData: false,
+                    success: function (data) {
                         container.html(data.html);
 //                        if (test = $("input[type=checkbox]:not(.toggle), input[type=radio]:not(.toggle)")) {
 //                            test.uniform();
@@ -142,7 +139,7 @@
                         hudMsg('success', 'Carrier Enabled.');
 
                     },
-                    error:function (data) {
+                    error: function (data) {
                         window.location.reload();
                     }
                 });

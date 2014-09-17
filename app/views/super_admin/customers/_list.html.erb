@@ -25,12 +25,16 @@
                   </div>
               <% end %>
             </td>
+
             <td class="center hidden-phone"><%= customer.updated_at.strftime("%m/%d/%Y") unless customer.created_at.blank? %></td>
             <td class="hidden-phone">
-              <div style="text-align: center;">
-                <button class="btn btn-info btn-mini" type="button" onclick="modify_carrier('<%=customer.id%>')">Modify
-                </button>
-              </div>
+              <!--<div style="text-align: center;">-->
+
+              <!--<button class="btn btn-info btn-mini" type="button" onclick="modify_carrier('<%= customer.id %>')">Modify-->
+              <!--</button>-->
+              <!--</div>-->
+              <a class="btn btn-default btn-xs purple" href="#"><i class="fa fa-edit"></i> Edit</a>
+              <a class="btn btn-default btn-xs purple" href="#"><i class="fa fa-edit"></i> View</a>
             </td>
           </tr>
       <% end %>
