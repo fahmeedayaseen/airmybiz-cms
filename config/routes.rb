@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #root 'home#index'
-  root :to => "home#1index"
+  root :to => "home#index"
 
   resources :home
 
